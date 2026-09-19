@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>تطبيق الموهوب - Tiago</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #0B0F17;
+    --card: #141B26;
+    --card-border: #212B3A;
+    --gold: #F5B942;
+    --gold-dim: rgba(245, 185, 66, 0.14);
+    --text: #E7ECF3;
+    --muted: #8B95A5;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Tajawal', sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+  }
+
+  /* توهج المسرح خلف الأيقونة */
+  .stage-glow {
+    position: absolute;
+    top: -120px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 700px;
+    height: 700px;
+    background: radial-gradient(circle, var(--gold-dim) 0%, transparent 65%);
+    pointer-events: none;
+  }
+
+  main {
+    width: 100%;
+    max-width: 520px;
+    padding: 72px 24px 48px;
+    position: relative;
+    z-index: 1;
+    text-align: center;
+  }
+
+  .icon {
+    width: 96px;
+    height: 96px;
+    border-radius: 26px;
+    margin: 0 auto 28px;
+    background: linear-gradient(145deg, #1C2531, #0F141C);
+    border: 1.5px solid rgba(245, 185, 66, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 1px rgba(255,255,255,0.02), 0 20px 40px rgba(0,0,0,0.4);
+  }
+
+  .icon svg { width: 46px; height: 46px; }
+
+  .eyebrow {
+    color: var(--gold);
+    font-size: 14px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    margin-bottom: 10px;
+  }
+
+  h1 {
+    font-size: 32px;
+    font-weight: 900;
+    line-height: 1.35;
+    margin-bottom: 14px;
+  }
+
+  h1 span { color: var(--gold); }
+
+  .subtitle {
+    color: var(--muted);
+    font-size: 16px;
+    line-height: 1.8;
+    max-width: 400px;
+    margin: 0 auto 40px;
+  }
+
+  .download-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background: var(--gold);
+    color: #14100A;
+    font-family: 'Tajawal', sans-serif;
+    font-size: 17px;
+    font-weight: 700;
+    padding: 17px 32px;
+    border-radius: 14px;
+    text-decoration: none;
+    box-shadow: 0 12px 30px rgba(245, 185, 66, 0.22);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    max-width: 340px;
+    margin: 0 auto;
+  }
+
+  .download-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 16px 36px rgba(245, 185, 66, 0.3);
+  }
+
+  .download-btn svg { width: 20px; height: 20px; flex-shrink: 0; }
+
+  .meta-line {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 14px;
+  }
+
+  .features {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 56px;
+    text-align: right;
+  }
+
+  .feature {
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 14px;
+    padding: 18px;
+  }
+
+  .feature-icon { font-size: 22px; margin-bottom: 10px; display: block; }
+
+  .feature-title { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+
+  .feature-desc { font-size: 12.5px; color: var(--muted); line-height: 1.6; }
+
+  .install-guide {
+    margin-top: 48px;
+    background: var(--card);
+    border: 1px solid var(--card-border);
+    border-radius: 16px;
+    padding: 22px 20px;
+    text-align: right;
+  }
+
+  .install-guide h2 {
+    font-size: 16px;
+    font-weight: 700;
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  .install-guide ol {
+    padding-right: 20px;
+    color: var(--muted);
+    font-size: 13.5px;
+    line-height: 2;
+  }
+
+  .install-guide li::marker { color: var(--gold); font-weight: 700; }
+
+  footer {
+    margin-top: 44px;
+    color: var(--muted);
+    font-size: 12px;
+    padding-bottom: 32px;
+  }
+
+  @media (max-width: 420px) {
+    h1 { font-size: 26px; }
+    .features { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<div class="stage-glow"></div>
+
+<main>
+  <div class="icon">
+    <svg viewBox="0 0 24 24" fill="none"><path d="M12 2L14.5 8.5L21 9.5L16 14L17.5 21L12 17.5L6.5 21L8 14L3 9.5L9.5 8.5L12 2Z" fill="#F5B942"/></svg>
+  </div>
+
+  <div class="eyebrow">Tiago — للمواهب</div>
+  <h1>حان وقت يشوفك <span>جمهورك</span></h1>
+  <p class="subtitle">دردش، اتصل، واستقبل الهدايا من داعميك — كل هيك من مكان واحد، وبأرباح واضحة لكل دقيقة.</p>
+
+  <a href="https://github.com/Eng-Eyad-IT/sanTiago-Talents/releases/download/v1.0.0/Tiago.apk" class="download-btn" download>
+    <svg viewBox="0 0 24 24" fill="none" stroke="#14100A" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+    تحميل تطبيق الموهوب
+  </a>
+  <p class="meta-line">Android · ملف APK مباشر</p>
+
+  <div class="features">
+    <div class="feature">
+      <span class="feature-icon">💬</span>
+      <div class="feature-title">دردشة ومكالمات</div>
+      <div class="feature-desc">نصية، صوتية، وفيديو مباشرة مع داعميك</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🌹</span>
+      <div class="feature-title">هدايا حقيقية</div>
+      <div class="feature-desc">ورود وألماسات تتحول لأرباح فعلية</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">📈</span>
+      <div class="feature-title">حائط المواهب</div>
+      <div class="feature-desc">انشر وخلّي داعمين جدد يكتشفوك</div>
+    </div>
+    <div class="feature">
+      <span class="feature-icon">🧾</span>
+      <div class="feature-title">أرباح شفافة</div>
+      <div class="feature-desc">فواتير واضحة، تعرف كل قرش وينو</div>
+    </div>
+  </div>
+
+  <div class="install-guide">
+    <h2>⚙️ خطوات التثبيت</h2>
+    <ol>
+      <li>اضغط زر التحميل فوق وانتظر تحميل الملف</li>
+      <li>افتح الملف بعد التحميل من إشعارات هاتفك</li>
+      <li>لو ظهرت رسالة "مصدر غير معروف"، اضغط "إعدادات" ثم فعّل السماح بالتثبيت</li>
+      <li>ارجع وأكمل التثبيت اعتيادياً</li>
+    </ol>
+  </div>
+
+  <footer>Tiago — جرأة بلا حدود</footer>
+</main>
+
+</body>
+</html>
